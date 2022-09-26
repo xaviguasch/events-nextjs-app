@@ -16,6 +16,8 @@ export async function getStaticProps() {
     props: {
       events: featuredEvents,
     },
+    revalidate: 1800, // If a new requests comes 30min after the last time
+    // the page was generated, then it will be generated again
   }
 }
 
