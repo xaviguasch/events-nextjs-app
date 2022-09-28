@@ -1,9 +1,18 @@
+import Head from 'next/head'
+
 import { getFeaturedEvents } from '../helpers/api-util'
 import EventList from '../components/events/event-list'
 
 function HomePage(props) {
   return (
     <div>
+      <Head>
+        <title>NextJS Events</title>
+        <meta
+          name='description'
+          content='Find a lot of great events that allow you to evolve...'
+        />
+      </Head>
       <EventList items={props.events} />
     </div>
   )
@@ -17,7 +26,7 @@ export async function getStaticProps() {
       events: featuredEvents,
     },
     revalidate: 1800, // If a new requests comes 30min after the last time
-    // the page was generated, then it will be generated again
+    // the page was generated, then it will be
   }
 }
 
